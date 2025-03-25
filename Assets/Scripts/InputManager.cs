@@ -75,7 +75,5 @@ public class InputManager : MonoBehaviour,
     void CheckArrowInput()
     {
         cameraMovementVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-
-        //TODO: Move camera based on cameraMovementVector
     }
 }
