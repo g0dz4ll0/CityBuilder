@@ -15,6 +15,7 @@ public class UIDragHandler : MonoBehaviour,
     [SerializeField] StructureManager structureManager;
     [SerializeField] RectTransform uiImage;
     [SerializeField] RectTransform canvas;
+    [SerializeField] bool isBigStructure = false;
 
     Vector2 _originalLocalPointerPosition;
     Vector3 _originalPanelLocalPosition;
@@ -52,7 +53,11 @@ public class UIDragHandler : MonoBehaviour,
         {
             Vector3Int positionInt = Vector3Int.RoundToInt(hit.point);
             Debug.Log("Position: " + positionInt);
-            structureManager.PlaceStructure(positionInt, structurePrefab);
+
+            if (!isBigStructure)
+                structureManager.PlaceStructure(positionInt, structurePrefab);
+            else
+                structureManager.PlaceBigStructure(positionInt, structurePrefab);
         }
         else
         {

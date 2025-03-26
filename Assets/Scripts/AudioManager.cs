@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class AudioPlayer : MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
     [SerializeField] AudioClip placementSound;
     [SerializeField] AudioSource audioSource;
 
-    public static AudioPlayer instance;
+    public static AudioManager instance;
 
     void Awake()
     {
