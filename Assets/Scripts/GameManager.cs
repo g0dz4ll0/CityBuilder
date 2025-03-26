@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] CameraMovement cameraMovement;
+    Vector2 cameraMovementVector;
 
-    [SerializeField] InputManager inputManager;
+    [SerializeField] CameraMovement cameraMovement;
+    [SerializeField] UIDragHandler inputManager;
 
     void Start()
     {
@@ -13,6 +14,12 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        cameraMovement.MoveCamera(new Vector3(inputManager.CameraMovementVector.x, 0, inputManager.CameraMovementVector.y));
+        CheckArrowInput();
+        cameraMovement.MoveCamera(new Vector3(cameraMovementVector.x, 0, cameraMovementVector.y));
+    }
+
+    void CheckArrowInput()
+    {
+        cameraMovementVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
     }
 }
