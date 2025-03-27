@@ -5,11 +5,7 @@ using UnityEngine;
 /// </summary>
 public class PlacementManager : MonoBehaviour
 {
-    [Header("Grid Settings")]
-    [Tooltip("The width of the grid")]
-    [SerializeField] int width;
-    [Tooltip("The height of the grid")]
-    [SerializeField] int height;
+    [Header("References")]
     [Tooltip("The parent transform for the buildings in the hierarchy")]
     [SerializeField] Transform buildingsParent;
 
@@ -25,47 +21,19 @@ public class PlacementManager : MonoBehaviour
     [Tooltip("The layer mask of the objects affected by the explosion")]
     [SerializeField] LayerMask whatIsAffectedByExplosion;
 
-    Grid _placementGrid;
+    // Singleton pattern to make sure there is only one instance of the PlacementManager
+    public static PlacementManager instance;
 
-    void Start()
+    void Awake()
     {
-        // Create a new grid with the given width and height
-        _placementGrid = new Grid(width, height);
-    }
-
-    /// <summary>
-    /// Checks if the position is inside the grid
-    /// </summary>
-    /// <param name="position">The position to check</param>
-    /// <returns>True if it is inside the grid, false if it isn't</returns>
-    public bool CheckIfPositionInBound(Vector3Int position)
-    {
-        if(position.x >= 0 && position.x < width && position.z >= 0 && position.z < height)
+        if (instance == null)
         {
-            return true;
+            instance = this;
         }
-        return false;
-    }
-
-    /// <summary>
-    /// Checks if the position is not occupied by another structure
-    /// </summary>
-    /// <param name="position">The position to check</param>
-    /// <returns>True if it is not occupied (of the type Empty), false is it is occupied (any other type)</returns>
-    public bool CheckIfPositionIsFree(Vector3Int position)
-    {
-        return CheckIfPositionIsOfType(position, CellType.Empty);
-    }
-
-    /// <summary>
-    /// Checks if the position is of the given type, used to check if the position is free or not.
-    /// </summary>
-    /// <param name="position">The cells position</param>
-    /// <param name="type">The current type of cell in the given position</param>
-    /// <returns>True if the type matches the given type, false if it doesn't</returns>
-    bool CheckIfPositionIsOfType(Vector3Int position, CellType type)
-    {
-        return _placementGrid[position.x, position.z] == type;
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
 
     /// <summary>
@@ -93,7 +61,7 @@ public class PlacementManager : MonoBehaviour
             {
                 // Calculate the new position and set the type of the cell
                 var newPosition = position + new Vector3Int(x, 0, z);
-                _placementGrid[newPosition.x, newPosition.z] = type;
+                StructureManager.instance.placementGrid[newPosition.x, newPosition.z] = type;
                 DestroyNatureAt(newPosition); // Destroy any nature object at the position
             }
         } 

@@ -11118,7 +11118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecd1653bd8fa96a49a825263daab1723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameCamera: {fileID: 330585545}
   cameraMovementSpeed: 5
 --- !u!1001 &332978743
 PrefabInstance:
@@ -12393,8 +12392,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95a0e49a8204bf40a05253a5ab1c8ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 30
-  height: 30
   buildingsParent: {fileID: 1173809122}
   natureFragment: {fileID: 8282668952280278067, guid: bc6b67637a05ef1459f8d9f14b0739ad, type: 3}
   radius: 1
@@ -31040,10 +31037,10 @@ RectTransform:
   - {fileID: 1214156723}
   m_Father: {fileID: 2052856929}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 296.65747}
-  m_SizeDelta: {x: -932.5281, y: -593.3149}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -43.84253}
+  m_SizeDelta: {x: 279.47192, y: 87.68512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &791463912
 MonoBehaviour:
@@ -42504,7 +42501,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83044d34ee33506488ce8803e436bdc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementManager: {fileID: 396054541}
+  width: 30
+  height: 30
 --- !u!1001 &1291848263
 PrefabInstance:
   m_ObjectHideFlags: 0

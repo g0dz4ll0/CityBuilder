@@ -10,6 +10,21 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] CameraMovement cameraMovement;
 
+    // Singleton pattern to make sure there is only one instance of the InputManager
+    public static InputManager instance;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Update()
     {
         // Compute the camera movement vector based on the input

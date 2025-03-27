@@ -14,7 +14,7 @@ public enum RotationType
 /// <summary>
 /// Handles the rotation of an object based on the button pressed
 /// </summary>
-public class RotatationButtonsHandler : MonoBehaviour, IUpdateSelectedHandler, IPointerDownHandler, IPointerUpHandler
+public class RotationButtonsHandler : MonoBehaviour, IUpdateSelectedHandler, IPointerDownHandler, IPointerUpHandler
 {
     // Tracks if the button is pressed
     bool _isPressed;
