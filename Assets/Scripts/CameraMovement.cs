@@ -1,18 +1,25 @@
 using UnityEngine;
 
+/// <summary>
+/// Handles the movement of the camera
+/// </summary>
 public class CameraMovement : MonoBehaviour
 {
-    [SerializeField] Camera gameCamera;
+    Camera _gameCamera;
     [SerializeField] float cameraMovementSpeed = 5;
 
     void Start()
     {
-        gameCamera = GetComponent<Camera>();
+        _gameCamera = GetComponent<Camera>();
     }
 
+    /// <summary>
+    /// Moves the camera based on the input vector
+    /// </summary>
+    /// <param name="inputVector">The players input</param>
     public void MoveCamera(Vector3 inputVector)
     {
         var movementVector = inputVector;
-        gameCamera.transform.position += movementVector * Time.deltaTime * cameraMovementSpeed;
+        _gameCamera.transform.position += movementVector * Time.deltaTime * cameraMovementSpeed;
     }
 }
